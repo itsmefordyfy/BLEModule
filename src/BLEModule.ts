@@ -1,4 +1,8 @@
-import { NativeModules, DeviceEventEmitter, EmitterSubscription } from 'react-native';
+import {
+  NativeModules,
+  DeviceEventEmitter,
+  EmitterSubscription,
+} from 'react-native';
 
 export interface BLEPeripheral {
   id: string;
@@ -17,7 +21,9 @@ export interface BLEModuleInterface {
 const BLEModule: BLEModuleInterface = NativeModules.BLEModule;
 
 if (!BLEModule) {
-  throw new Error('BLEModule is not available. Make sure the native module is properly linked.');
+  throw new Error(
+    'BLEModule is not available. Make sure the native module is properly linked.',
+  );
 }
 
 export const BLEEvents = {
@@ -46,17 +52,26 @@ export class BLEManager {
   }
 
   onScanStart(callback: () => void): void {
-    const listener = DeviceEventEmitter.addListener(BLEEvents.SCAN_START, callback);
+    const listener = DeviceEventEmitter.addListener(
+      BLEEvents.SCAN_START,
+      callback,
+    );
     this.eventListeners.push(listener);
   }
 
   onScanEnd(callback: () => void): void {
-    const listener = DeviceEventEmitter.addListener(BLEEvents.SCAN_END, callback);
+    const listener = DeviceEventEmitter.addListener(
+      BLEEvents.SCAN_END,
+      callback,
+    );
     this.eventListeners.push(listener);
   }
 
   onPeripheralDiscovered(callback: (peripheral: BLEPeripheral) => void): void {
-    const listener = DeviceEventEmitter.addListener(BLEEvents.PERIPHERAL_DISCOVERED, callback);
+    const listener = DeviceEventEmitter.addListener(
+      BLEEvents.PERIPHERAL_DISCOVERED,
+      callback,
+    );
     this.eventListeners.push(listener);
   }
 

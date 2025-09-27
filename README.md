@@ -18,6 +18,7 @@ A React Native native module for scanning Bluetooth Low Energy (BLE) peripherals
 
 1. Clone or download this project.
 2. Install dependencies:
+
    ```sh
    npm install
    ```
@@ -96,10 +97,11 @@ bleManager.removeAllListeners();
 
 ```typescript
 interface BLEPeripheral {
-  id: string;              // Unique identifier (UUID)
-  name?: string;           // Device name (may be undefined)
-  rssi: number;            // Signal strength in dBm
-  advertisementData?: {    // Additional advertisement data
+  id: string; // Unique identifier (UUID)
+  name?: string; // Device name (may be undefined)
+  rssi: number; // Signal strength in dBm
+  advertisementData?: {
+    // Additional advertisement data
     [key: string]: any;
   };
 }
@@ -108,11 +110,13 @@ interface BLEPeripheral {
 ## Integration into Existing Apps
 
 1. Copy the native module files:
+
    - Android: `android/app/src/main/java/com/blemodule/BLEModule.kt` and `BLEPackage.kt`
    - iOS: `ios/BLEModule/BLEModule.swift`
    - TypeScript: `src/BLEModule.ts`
 
 2. Register the native modules:
+
    - Android: Add `BLEPackage()` to `MainApplication.kt`
    - iOS: The module is automatically registered
 
@@ -142,6 +146,7 @@ interface BLEPeripheral {
 ## Example App
 
 The included `BLEScanner` component demonstrates:
+
 - Starting/stopping scans with UI buttons
 - Displaying discovered peripherals in a list
 - Real-time status updates
@@ -187,6 +192,7 @@ npm run ios
 ## Contributing
 
 This module demonstrates best practices for React Native native module development:
+
 - Clean separation of concerns
 - TypeScript for type safety
 - Event-driven architecture

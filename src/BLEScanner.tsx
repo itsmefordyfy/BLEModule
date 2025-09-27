@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, FlatList, StyleSheet, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  StyleSheet,
+  Alert,
+} from 'react-native';
 import { BLEManager, BLEPeripheral } from './BLEModule';
 
 const BLEScanner: React.FC = () => {
@@ -33,7 +40,7 @@ const BLEScanner: React.FC = () => {
         const existing = prev.find(p => p.id === peripheral.id);
         if (existing) {
           // Update existing peripheral
-          return prev.map(p => p.id === peripheral.id ? peripheral : p);
+          return prev.map(p => (p.id === peripheral.id ? peripheral : p));
         } else {
           // Add new peripheral
           return [...prev, peripheral];
@@ -105,11 +112,13 @@ const BLEScanner: React.FC = () => {
         Status: {isScanning ? 'Scanning...' : 'Not scanning'}
       </Text>
 
-      <Text style={styles.peripheralsTitle}>Discovered Peripherals ({peripherals.length})</Text>
+      <Text style={styles.peripheralsTitle}>
+        Discovered Peripherals ({peripherals.length})
+      </Text>
 
       <FlatList
         data={peripherals}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
         renderItem={renderPeripheral}
         style={styles.list}
       />
